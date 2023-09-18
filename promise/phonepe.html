@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PhonePe Payment System</title>
+  <style>
+    /* Define your CSS styles for different UI states here */
+    #processing {
+      display: none;
+    }
+    #success {
+      display: none;
+      color: green;
+    }
+    #failure {
+      display: none;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="processing">
+    <h1>Processing Payment...</h1>
+    <img src="https://media.tenor.com/UEtA7Yo7UTQAAAAM/processing.gif" alt="Processing" />
+  </div>
+  
+  <div id="success">
+    <h1>Payment Successful!</h1>
+    <p>Thank you for using PhonePe.</p>
+  </div>
+  
+  <div id="failure">
+    <h1>Payment Failed!</h1>
+    <p>Please try again later.</p>
+  </div>
+  
+  <button id="startPayment">Start Payment</button>
+
+  <script>
+    // Simulate a payment process with Promises
+    function processPayment() {
+      return new Promise((resolve, reject) => {
+        // Simulate payment processing (e.g., with a delay)
+        setTimeout(() => {
+          const isPaymentSuccessful = Math.random() < 0.5; // 50% chance of success
+          if (isPaymentSuccessful) {
+            resolve();
+          } else {
+            reject();
+          }
+        }, 2000); // Simulated 2-second delay
+      });
+    }
+
+    const processingUI = document.getElementById('processing');
+    const successUI = document.getElementById('success');
+    const failureUI = document.getElementById('failure');
+    const startPaymentButton = document.getElementById('startPayment');
+
+    startPaymentButton.addEventListener('click', () => {
+      // Show processing UI
+      processingUI.style.display = 'block';
+
+      // Start payment process
+      processPayment()
+        .then(() => {
+          // Payment successful, hide processing UI and show success UI
+          processingUI.style.display = 'none';
+          successUI.style.display = 'block';
+        })
+        .catch(() => {
+          // Payment failed, hide processing UI and show failure UI
+          processingUI.style.display = 'none';
+          failureUI.style.display = 'block';
+        });
+    });
+  </script>
+</body>
+</html>

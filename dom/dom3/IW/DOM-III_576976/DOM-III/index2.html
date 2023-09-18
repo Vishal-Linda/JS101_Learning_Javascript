@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM3-B</title>
+    <style>
+        #cont{
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="cont"></div>
+    
+</body>
+<script>
+    //1. catching the element
+    //2. getting the value // input tag
+    //3 addevent listner
+    // 4 . attribute
+    // 5 . create html element with the help of js
+
+let heading = document.createElement("h1");
+heading.innerText = "I am a heading"
+// document.body.append(heading);
+let container = document.getElementById("cont")
+container.append(heading)
+
+</script>
+</html>

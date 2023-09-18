@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form >
+        <input type="text" placeholder="Name" id="name">
+        <input type="email" placeholder="email" id="email">
+        <input type="password" placeholder="password" id="password">
+        <input type="submit" value="SUBMIT">
+    </form>
+</body>
+
+<script>
+    const myForm = document.querySelector("form");
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+
+    let AllData = [];
+myForm.addEventListener("submit",function(e)
+{
+  e.preventDefault()
+    let Data  = 
+    {
+        name : name.value,
+        email : email.value,
+        password : password.value
+    }
+AllData.push(Data)
+    
+})
+console.log(AllData)
+
+
+</script>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+        #container > div{
+            border: 2px solid red;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    
+</body>
+<script>
+     const PRODUCTS = [
+        {
+            "product": "Lamb Rack Frenched Australian",
+            "price": 808,
+            "seller": "Podcat"
+        }, {
+            "product": "Paste - Black Olive",
+            "price": 329,
+            "seller": "Kazu"
+        }, {
+            "product": "Bananas",
+            "price": 226,
+            "seller": "Aimbu"
+        }, {
+            "product": "Beer - Original Organic Lager",
+            "price": 349,
+            "seller": "Shufflester"
+        }, {
+            "product": "Muffin Mix - Corn Harvest",
+            "price": 908,
+            "seller": "Flashdog"
+        }, {
+            "product": "Crackers Cheez It",
+            "price": 893,
+            "seller": "Digitube"
+        }, {
+            "product": "Numi - Assorted Teas",
+            "price": 539,
+            "seller": "Roombo"
+        }, {
+            "product": "Cookies Almond Hazelnut",
+            "price": 894,
+            "seller": "Dabvine"
+        }, {
+            "product": "Cookies Almond Hazelnut",
+            "price": 923,
+            "seller": "Mudo"
+        }, {
+            "product": "Flavouring - Rum",
+            "price": 244,
+            "seller": "Yoveo"
+        }, {
+            "product": "Wine - Taylors Reserve",
+            "price": 899,
+            "seller": "Zoombeat"
+        }, {
+            "product": "Radish",
+            "price": 176,
+            "seller": "Centizu"
+        }, {
+            "product": "Sugar - Invert",
+            "price": 114,
+            "seller": "Digitube"
+        }, {
+            "product": "Foil - 4oz Custard Cup",
+            "price": 287,
+            "seller": "Jayo"
+        }, {
+            "product": "Crackers - Graham",
+            "price": 813,
+            "seller": "Tazzy"
+        }, {
+            "product": "Chick Peas - Dried",
+            "price": 551,
+            "seller": "Shuffledrive"
+        }, {
+            "product": "Tray - 12in Rnd Blk",
+            "price": 129,
+            "seller": "Jayo"
+        }, {
+            "product": "Pastry - Carrot Muffin - Mini",
+            "price": 735,
+            "seller": "Blognation"
+        }, {
+            "product": "Wine - Red, Antinori Santa",
+            "price": 895,
+            "seller": "Skivee"
+        }, {
+            "product": "Vol Au Vents",
+            "price": 912,
+            "seller": "Lazzy"
+        }, {
+            "product": "Mussels - Cultivated",
+            "price": 173,
+            "seller": "Kayveo"
+        }, {
+            "product": "Crab - Claws, 26 - 30",
+            "price": 766,
+            "seller": "Centimia"
+        }, {
+            "product": "Pepper - Green, Chili",
+            "price": 817,
+            "seller": "Lazzy"
+        }, {
+            "product": "Rice - 7 Grain Blend",
+            "price": 752,
+            "seller": "Oozz"
+        }, {
+            "product": "Pork - Suckling Pig",
+            "price": 257,
+            "seller": "Skynoodle"
+        }, {
+            "product": "Wine - Toasted Head",
+            "price": 232,
+            "seller": "Voomm"
+        }, {
+            "product": "Corn - Cream, Canned",
+            "price": 468,
+            "seller": "Zoonder"
+        }, {
+            "product": "Bread - Crusty Italian Poly",
+            "price": 774,
+            "seller": "Photobean"
+        }, {
+            "product": "Pepper - Red Bell",
+            "price": 765,
+            "seller": "Devpulse"
+        }, {
+            "product": "Beef - Cow Feet Split",
+            "price": 291,
+            "seller": "Gevee"
+        }, {
+            "product": "Beef - Ox Tongue, Pickled",
+            "price": 385,
+            "seller": "Mymm"
+        }, {
+            "product": "Tomatoes - Roma",
+            "price": 171,
+            "seller": "Zoombeat"
+        }, {
+            "product": "Peach - Halves",
+            "price": 1000,
+            "seller": "Brainlounge"
+        }, {
+            "product": "Vodka - Lemon, Absolut",
+            "price": 399,
+            "seller": "Yata"
+        }, {
+            "product": "Wine - Two Oceans Sauvignon",
+            "price": 847,
+            "seller": "Zoovu"
+        }, {
+            "product": "Sage Ground Wiberg",
+            "price": 873,
+            "seller": "Agivu"
+        }, {
+            "product": "Onion - Dried",
+            "price": 528,
+            "seller": "Cogilith"
+        }, {
+            "product": "Beans - Kidney White",
+            "price": 799,
+            "seller": "Thoughtsphere"
+        }, {
+            "product": "Veal - Leg",
+            "price": 964,
+            "seller": "Blogpad"
+        }, {
+            "product": "Spring Roll Veg Mini",
+            "price": 372,
+            "seller": "Edgeclub"
+        }, {
+            "product": "Salmon Atl.whole 8 - 10 Lb",
+            "price": 389,
+            "seller": "Agimba"
+        }, {
+            "product": "Curry Paste - Madras",
+            "price": 850,
+            "seller": "Thoughtworks"
+        }, {
+            "product": "Bread - Triangle White",
+            "price": 476,
+            "seller": "Youfeed"
+        }, {
+            "product": "Sugar - Icing",
+            "price": 902,
+            "seller": "Lazzy"
+        }, {
+            "product": "Cheese - Cottage Cheese",
+            "price": 818,
+            "seller": "Vidoo"
+        }, {
+            "product": "Carrots - Jumbo",
+            "price": 910,
+            "seller": "Yodoo"
+        }, {
+            "product": "Ice Cream Bar - Hageen Daz To",
+            "price": 565,
+            "seller": "Twitterwire"
+        }, {
+            "product": "Wine - Remy Pannier Rose",
+            "price": 283,
+            "seller": "Edgewire"
+        }, {
+            "product": "Sauce - Chili",
+            "price": 413,
+            "seller": "Realpoint"
+        }, {
+            "product": "Pork - Loin, Bone - In",
+            "price": 218,
+            "seller": "Pixope"
+        }
+    ]
+
+
+let cont = document.getElementById("container");
+
+PRODUCTS.map((ele)=>
+{
+    let card = document.createElement("div");
+    let title = document.createElement("h2");
+    let price = document.createElement("p");
+    let seller = document.createElement("h4");
+    title.innerText = ele.product;
+    price.innerText = ele.price;
+    seller.innerText = ele.seller;
+
+    card.append(title,price,seller);
+    cont.append(card)
+
+
+})
+
+
+   </script> 
+
+
+
+
+</html>
+

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Slideshow</title>
+    <style>
+        #slideshow-container {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="slideshow-container">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2018/01/12/10/19/fantasy-3077928_640.jpg" alt="Image 1">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2016/10/18/21/22/beach-1751455_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2016/12/16/15/25/christmas-1911637_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2018/08/23/07/35/thunderstorm-3625405_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2013/08/20/15/47/poppies-174276_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2016/04/18/22/05/seashells-1337565_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2018/08/21/23/29/forest-3622519_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2017/07/03/20/17/colorful-2468874_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2016/02/10/21/57/heart-1192662_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2016/10/21/14/50/plouzane-1758197_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2018/09/23/18/30/drop-3698073_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2015/04/19/08/32/rose-729509_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072821_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2015/12/09/01/02/mandalas-1084082_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2018/08/15/13/10/galaxy-3608029_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2015/04/19/08/33/flower-729512_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2017/02/08/17/24/fantasy-2049567_640.jpg" alt="Image 2">
+        <img class="slide" src="https://cdn.pixabay.com/photo/2013/07/25/13/01/stones-167089_640.jpg" alt="Image 2">
+        
+
+        <div class="btn-container">
+            <button id="toggleBtn" class="btn">Start</button>
+            <button id="prevBtn" class="btn">Previous</button>
+            <button id="nextBtn" class="btn">Next</button>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        let slideshowInterval;
+        const slides = document.querySelectorAll('.slide');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function showSlide(index) {
+            slides.forEach((slide) => (slide.style.display = 'none'));
+            slides[index].style.display = 'block';
+        }
+
+        function toggleSlideshow() {
+            if (toggleBtn.textContent === 'Start') {
+                toggleBtn.textContent = 'Stop';
+                slideshowInterval = setInterval(nextSlide, 2000);
+            } else {
+                toggleBtn.textContent = 'Start';
+                clearInterval(slideshowInterval);
+            }
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            if (slideIndex < 0) {
+                slideIndex = slides.length - 1;
+            }
+            showSlide(slideIndex);
+        }
+
+        toggleBtn.addEventListener('click', toggleSlideshow);
+        prevBtn.addEventListener('click', () => {
+            clearInterval(slideshowInterval);
+            prevSlide();
+        });
+        nextBtn.addEventListener('click', () => {
+            clearInterval(slideshowInterval);
+            nextSlide();
+        });
+
+        // Initial setup
+        showSlide(slideIndex);
+    </script>
+</body>
+</html>

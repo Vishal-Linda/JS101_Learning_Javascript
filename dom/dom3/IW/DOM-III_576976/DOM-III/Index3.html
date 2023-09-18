@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="cont">
+
+    </div>
+</body>
+<script>
+    const arr = [
+        "Heading - 1",
+        "Heading - 2",
+        "Heading - 3",
+        "Heading - 4"
+    ]
+
+    let container = document.getElementById("cont");
+// map
+// arr.map((ele)=>
+// {
+//     let heading = document.createElement("h1");
+//     heading.innerText = ele;
+//     container.append(heading);
+// })
+
+for(let i = 0; i<arr.length; i++ )
+{
+    let heading = document.createElement("h1");
+    heading.innerText = arr[i];
+    container.append(heading);
+}
+
+</script>
+</html>
