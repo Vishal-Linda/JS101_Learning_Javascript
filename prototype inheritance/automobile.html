@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    // Step 1: Define the base object
+const Automobile = {
+  startEngine() {
+    console.log("Starting the engine...");
+  },
+  stopEngine() {
+    console.log("Stopping the engine...");
+  },
+};
+
+// Step 2: Create specific types of four-wheelers that inherit from the base object
+
+// Using Object.create() for Car
+const Car = Object.create(Automobile);
+Car.type = "Car";
+Car.drive = function () {
+  console.log(`Driving the ${this.type}`);
+};
+
+// Using Object.create() for SUV
+const SUV = Object.create(Automobile);
+SUV.type = "SUV";
+SUV.offRoad = function () {
+  console.log(`Driving the ${this.type} off-road`);
+};
+
+// Step 3: Constructor functions for Truck
+function Truck() {
+  this.type = "Truck";
+}
+
+// Inherit methods from the base Automobile object using prototype
+Truck.prototype = Object.create(Automobile);
+
+// Add a unique method for Truck
+Truck.prototype.loadCargo = function () {
+  console.log(`Loading cargo in the ${this.type}`);
+};
+
+// Create instances of each type
+const myCar = Object.create(Car);
+const mySUV = Object.create(SUV);
+const myTruck = new Truck();
+
+// Test the inheritance and methods
+myCar.startEngine();
+myCar.drive();
+
+mySUV.startEngine();
+mySUV.offRoad();
+
+myTruck.startEngine();
+myTruck.loadCargo();
+
+</script>
+</html>

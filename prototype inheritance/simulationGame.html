@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    // Vehicle constructor function
+function Vehicle(brand, model, speed, fuelType) {
+  this.brand = brand;
+  this.model = model;
+  this.speed = speed;
+  this.fuelType = fuelType;
+}
+
+// Common methods for all vehicles using the prototype
+Vehicle.prototype.accelerate = function (amount) {
+  this.speed += amount;
+  console.log(`${this.brand} ${this.model} is accelerating to ${this.speed} mph.`);
+};
+
+Vehicle.prototype.brake = function (amount) {
+  this.speed -= amount;
+  console.log(`${this.brand} ${this.model} is slowing down to ${this.speed} mph.`);
+};
+
+Vehicle.prototype.refuel = function () {
+  console.log(`${this.brand} ${this.model} is refueling.`);
+};
+
+// Car constructor function inheriting from Vehicle
+function Car(brand, model, speed, fuelType, numberOfWheels) {
+  // Call the parent constructor using 'call' to set the properties inherited from Vehicle
+  Vehicle.call(this, brand, model, speed, fuelType);
+  this.numberOfWheels = numberOfWheels;
+}
+
+// Inherit methods from Vehicle using Object.create
+Car.prototype = Object.create(Vehicle.prototype);
+
+// Add a new method specific to Car
+Car.prototype.honk = function () {
+  console.log(`Honk! ${this.brand} ${this.model} is honking.`);
+};
+
+// Airplane constructor function inheriting from Vehicle
+function Airplane(brand, model, speed, fuelType, numberOfEngines, hasLandingGear) {
+  // Call the parent constructor using 'call' to set the properties inherited from Vehicle
+  Vehicle.call(this, brand, model, speed, fuelType);
+  this.numberOfEngines = numberOfEngines;
+  this.hasLandingGear = hasLandingGear;
+}
+
+// Inherit methods from Vehicle using Object.create
+Airplane.prototype = Object.create(Vehicle.prototype);
+
+// Add a new method specific to Airplane
+Airplane.prototype.takeOff = function () {
+  console.log(`Preparing for takeoff. ${this.brand} ${this.model} is taking off.`);
+};
+
+// Create instances of Car and Airplane
+const myCar = new Car("Toyota", "Camry", 60, "Gasoline", 4);
+const myAirplane = new Airplane("Boeing", "747", 500, "Jet Fuel", 4, true);
+
+// Demonstrate invoking methods
+myCar.accelerate(20);
+myCar.brake(10);
+myCar.refuel();
+myCar.honk();
+
+myAirplane.accelerate(100);
+myAirplane.brake(30);
+myAirplane.refuel();
+myAirplane.takeOff();
+
+</script>
+</html>
