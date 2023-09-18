@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+        /* Add your CSS styles here */
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #scoreBox {
+            font-size: 24px;
+            padding: 10px;
+            border: 2px solid #000;
+            width: 150px;
+            margin: 10px;
+        }
+
+        #minBox, #maxBox {
+            font-size: 20px;
+            margin: 10px;
+        }
+
+        button {
+            font-size: 18px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="scoreBox"></div>
+        <button onclick="addToScore(1)">1</button>
+        <button onclick="addToScore(2)">2</button>
+        <button onclick="addToScore(3)">3</button>
+        <button onclick="addToScore(4)">4</button>
+        <button onclick="addToScore(5)">5</button>
+        <button onclick="addToScore(6)">6</button>
+        <button onclick="addToScore(7)">7</button>
+        <button onclick="addToScore(8)">8</button>
+        <button onclick="addToScore(9)">9</button>
+        <button onclick="addToScore(0)">0</button>
+        <br>
+        <button onclick="enterScore()">ENTER</button>
+        <div id="minBox">MIN: 0</div>
+        <div id="maxBox">MAX: 0</div>
+    </div>
+
+    <script>
+        // JavaScript code
+        let currentScore = '';
+        let minScore = Infinity;
+        let maxScore = -Infinity;
+
+        function addToScore(number) {
+            currentScore += number;
+            document.getElementById('scoreBox').textContent = currentScore;
+        }
+
+        function enterScore() {
+            const score = parseInt(currentScore);
+            if (!isNaN(score)) {
+                if (score < minScore) {
+                    minScore = score;
+                    document.getElementById('minBox').textContent = `MIN: ${minScore}`;
+                }
+                if (score > maxScore) {
+                    maxScore = score;
+                    document.getElementById('maxBox').textContent = `MAX: ${maxScore}`;
+                }
+            }
+            currentScore = '';
+            document.getElementById('scoreBox').textContent = currentScore;
+        }
+    </script>
+</body>
+</html>
