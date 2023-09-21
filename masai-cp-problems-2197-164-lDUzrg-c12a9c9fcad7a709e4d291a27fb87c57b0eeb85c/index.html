@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OddEven App</title>
+
+</head>
+<body>
+
+    <button id = "generate-number" >Generate Number</button>
+    <div id = "number" ></div>
+    <div id = "odd-even"></div>
+    <script src="./src/oddEven.js" ></script>
+
+    <script>
+        // Function to generate a random number between 1 and 100
+        function generateNumber() {
+            const randomNumber = Math.floor(Math.random() * 100) + 1; // Generate a random number between 1 and 100
+            const numberDiv = document.getElementById('number');
+            numberDiv.textContent = randomNumber; // Update the number display
+            checkOddEven(randomNumber); // Invoke checkOddEven with the generated number
+        }
+
+        // Function to check if a number is odd or even and update the result
+        function checkOddEven(number) {
+            const oddEvenDiv = document.getElementById('odd-even');
+            if (number % 2 === 0) {
+                oddEvenDiv.textContent = `Even - The number is even`;
+            } else {
+                oddEvenDiv.textContent = `Odd - The number is odd`;
+            }
+        }
+
+        // Add a click event listener to the "Generate Number" button
+        const generateButton = document.getElementById('generate-number');
+        generateButton.addEventListener('click', generateNumber);
+    </script>
+</body>
+</html>
